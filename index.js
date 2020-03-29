@@ -1,6 +1,8 @@
 const needle = require("needle");
+const mongodb = require("./mongodb/mongodb.connect");
 
 async function main() {
+  const mongoClient = await mongodb();
   const result = await needle(
     "get",
     "https://www2.hm.com/en_us/women/products/view-all/_jcr_content/main/productlisting_30ab.display.json?sort=stock&image-size=small&image=model&offset=100&page-size=36",
@@ -11,7 +13,6 @@ async function main() {
       }
     }
   );
-  console.log(result.body);
 }
 
 main();
