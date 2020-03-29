@@ -13,6 +13,10 @@ async function main() {
       }
     }
   );
+  console.log(result);
+  const hmDb = mongoClient.db("hm");
+  const womenProducts = hmDb.collection("women-products");
+  await womenProducts.insertMany(result.body.products);
 }
 
 main();
